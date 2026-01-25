@@ -1,11 +1,37 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Professional A4 Document Styling for Docusaurus
+ * Memphis & Misraim Historical Documents
  */
 
-/* You can override the default Infima variables here. */
+/* ========================================
+   FONTS
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   CSS CUSTOM PROPERTIES
+   ======================================== */
 :root {
+  /* Document Typography */
+  --doc-font-serif: 'Crimson Pro', 'Georgia', 'Times New Roman', serif;
+  --doc-font-sans: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+  /* Responsive Paper Layout */
+  --doc-paper-width: min(800px, 90vw);
+  --doc-paper-padding-x: clamp(1rem, 5vw, 3rem);
+  --doc-paper-padding-y: clamp(1.5rem, 4vw, 2.5rem);
+  --doc-paper-margin-y: clamp(0.5rem, 2vw, 2rem);
+
+  /* Infima Overrides - Fluid Typography */
+  --ifm-font-size-base: clamp(100%, 0.5vw + 0.9rem, 112.5%);
+  --ifm-line-height-base: 1.75;
+  --ifm-font-family-base: var(--doc-font-serif);
+  --ifm-heading-font-family: var(--doc-font-sans);
+  --ifm-heading-font-weight: 600;
+  --ifm-container-width: var(--doc-paper-width);
+  --ifm-container-width-xl: var(--doc-paper-width);
+
+  /* Theme Colors */
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -15,9 +41,11 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Document Spacing */
+  --doc-paragraph-spacing: 1.25em;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -29,21 +57,336 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Parallel text legend */
+/* ========================================
+   PAPER LAYOUT
+   ======================================== */
+.main-wrapper {
+  background: var(--ifm-color-gray-100);
+}
+
+[data-theme='dark'] .main-wrapper {
+  background: var(--ifm-color-gray-900);
+}
+
+/* Document content area - the "paper" effect */
+.theme-doc-markdown {
+  background: var(--ifm-background-surface-color);
+  max-width: var(--doc-paper-width);
+  margin: var(--doc-paper-margin-y) auto;
+  padding: var(--doc-paper-padding-y) var(--doc-paper-padding-x);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}
+
+[data-theme='dark'] .theme-doc-markdown {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Doc main container background */
+[class*="docMainContainer"] {
+  background: var(--ifm-color-gray-100);
+}
+
+[data-theme='dark'] [class*="docMainContainer"] {
+  background: var(--ifm-color-gray-900);
+}
+
+/* ========================================
+   RESPONSIVE ADAPTATIONS
+   ======================================== */
+/* Tablet */
+@media (max-width: 996px) {
+  .theme-doc-markdown {
+    margin: 1rem auto;
+    border-radius: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .theme-doc-markdown {
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .theme-doc-markdown h1 {
+    font-size: 1.5rem;
+  }
+
+  .theme-doc-markdown h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* ========================================
+   CONTENT TYPOGRAPHY
+   ======================================== */
+.theme-doc-markdown p {
+  margin-bottom: var(--doc-paragraph-spacing);
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.theme-doc-markdown h1 {
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.theme-doc-markdown h2 {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .theme-doc-markdown h2 {
+  color: var(--ifm-color-primary-light);
+}
+
+.theme-doc-markdown h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.theme-doc-markdown blockquote {
+  font-style: italic;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: color-mix(in srgb, var(--ifm-color-primary) 5%, transparent);
+}
+
+.theme-doc-markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.theme-doc-markdown a {
+  color: var(--ifm-color-primary-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.theme-doc-markdown a:hover {
+  color: var(--ifm-color-primary);
+  text-decoration-thickness: 2px;
+}
+
+[data-theme='dark'] .theme-doc-markdown a {
+  color: var(--ifm-color-primary-light);
+}
+
+.theme-doc-markdown hr {
+  margin: 2.5rem auto;
+  width: 40%;
+  border: none;
+  border-top: 1px solid var(--ifm-color-gray-400);
+}
+
+/* Tables */
+.theme-doc-markdown table {
+  font-size: 0.9em;
+  width: 100%;
+}
+
+.theme-doc-markdown th {
+  background: var(--ifm-color-gray-100);
+}
+
+[data-theme='dark'] .theme-doc-markdown th {
+  background: var(--ifm-color-gray-800);
+}
+
+/* ========================================
+   PARALLEL TEXT LEGEND
+   ======================================== */
 .parallel-legend {
   display: flex;
-  gap: 1.5rem;
-  margin: 1rem 0 1.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--ifm-background-surface-color);
-  border-radius: 0.5rem;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  padding: 0.875rem 1.25rem;
+  background: var(--ifm-color-gray-100);
+  border-radius: 4px;
   font-size: 0.875rem;
+  font-family: var(--doc-font-sans);
+  border: 1px solid var(--ifm-color-gray-200);
+}
+
+[data-theme='dark'] .parallel-legend {
+  background: var(--ifm-color-gray-800);
+  border-color: var(--ifm-color-gray-700);
 }
 
 .legend-en {
-  color: var(--ifm-color-primary);
+  color: var(--ifm-font-color-base);
+  font-weight: 500;
+}
+
+.legend-en::before {
+  content: "\25A0 ";
+  color: var(--ifm-color-gray-500);
 }
 
 .legend-bg {
-  color: var(--ifm-color-success);
+  color: var(--ifm-font-color-base);
+  font-weight: 500;
+}
+
+.legend-bg::before {
+  content: "\25A0 ";
+  color: var(--ifm-color-gray-400);
+}
+
+[data-theme='dark'] .legend-en::before {
+  color: var(--ifm-color-gray-500);
+}
+
+[data-theme='dark'] .legend-bg::before {
+  color: var(--ifm-color-gray-600);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 20mm 15mm 25mm 15mm;
+
+    /* Page numbers - works in Prince, WeasyPrint, some browsers */
+    @bottom-center {
+      content: "— " counter(page) " —";
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 10pt;
+      color: #666;
+    }
+  }
+
+  @page :first {
+    margin-top: 25mm;
+    @bottom-center {
+      content: none;
+    }
+  }
+
+  /* Hide UI elements */
+  .navbar,
+  .navbar-sidebar,
+  .footer,
+  .theme-doc-sidebar-container,
+  .theme-doc-toc-desktop,
+  .theme-doc-toc-mobile,
+  .pagination-nav,
+  .theme-doc-footer,
+  .theme-doc-breadcrumbs,
+  [class*="announcementBar"],
+  [class*="searchBox"],
+  .theme-back-to-top-button,
+  button,
+  .parallel-legend {
+    display: none !important;
+  }
+
+  /* Reset layouts */
+  body,
+  .main-wrapper,
+  .theme-doc-markdown {
+    background: white !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* Print typography */
+  body {
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    color: black !important;
+  }
+
+  .theme-doc-markdown p {
+    text-align: justify;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .theme-doc-markdown h1,
+  .theme-doc-markdown h2,
+  .theme-doc-markdown h3,
+  .theme-doc-markdown h4 {
+    color: black !important;
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .theme-doc-markdown h1 {
+    font-size: 18pt !important;
+    border-bottom: 1pt solid black !important;
+    padding-bottom: 6pt !important;
+    page-break-before: always;
+    break-before: always;
+  }
+
+  .theme-doc-markdown h1:first-of-type {
+    page-break-before: avoid;
+    break-before: avoid;
+  }
+
+  .theme-doc-markdown h2 {
+    font-size: 14pt !important;
+    margin-top: 18pt !important;
+  }
+
+  .theme-doc-markdown h3 {
+    font-size: 12pt !important;
+  }
+
+  .theme-doc-markdown a {
+    color: black !important;
+    text-decoration: underline !important;
+  }
+
+  .theme-doc-markdown a[href^="http"]:after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .theme-doc-markdown a[href^="/"]:after,
+  .theme-doc-markdown a[href^="#"]:after {
+    content: none;
+  }
+
+  .theme-doc-markdown blockquote {
+    border-left: 2pt solid #333 !important;
+    background: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .theme-doc-markdown figure,
+  .theme-doc-markdown img,
+  .theme-doc-markdown table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .theme-doc-markdown table {
+    font-size: 9pt !important;
+  }
+
+  .theme-doc-markdown th {
+    background: #eee !important;
+  }
 }

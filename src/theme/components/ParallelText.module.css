@@ -1,42 +1,106 @@
+/**
+ * ParallelText Component Styles
+ * Bilingual side-by-side text display
+ */
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  margin: 0.5rem 0;
+  margin: 1.25rem 0;
+  text-align: left;
 }
 
 .columnEn,
 .columnBg {
-  padding: 0.75rem 1rem;
-  line-height: 1.8;
+  padding: 0.875rem 1rem;
+  line-height: 1.7;
 }
 
 .columnEn {
-  border-left: 3px solid var(--ifm-color-primary);
-  background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+  border-left: 3px solid var(--ifm-color-gray-400);
+  background: transparent;
 }
 
 .columnBg {
-  border-left: 3px solid var(--ifm-color-success);
-  background: color-mix(in srgb, var(--ifm-color-success) 8%, transparent);
+  border-left: 3px solid var(--ifm-color-gray-300);
+  background: transparent;
 }
 
 .content {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   color: var(--ifm-font-color-base);
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
+/* Responsive - stack on narrower screens */
 @media (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
+  }
+
+  .columnBg {
+    border-top: 1px solid var(--ifm-color-gray-300);
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    font-size: 0.875rem;
+  }
+
+  .columnEn,
+  .columnBg {
+    padding: 0.75rem;
   }
 }
 
 /* Dark mode */
 [data-theme='dark'] .columnEn {
-  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  border-left-color: var(--ifm-color-gray-500);
+  background: transparent;
 }
 
 [data-theme='dark'] .columnBg {
-  background: color-mix(in srgb, var(--ifm-color-success) 12%, transparent);
+  border-left-color: var(--ifm-color-gray-600);
+  background: transparent;
+}
+
+[data-theme='dark'] .columnBg {
+  border-top-color: var(--ifm-color-gray-700);
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .columnEn,
+  .columnBg {
+    padding: 6pt 8pt;
+    line-height: 1.4;
+  }
+
+  .columnEn {
+    border-left: 2pt solid #333 !important;
+    background: none !important;
+  }
+
+  .columnBg {
+    border-left: 2pt solid #666 !important;
+    background: none !important;
+  }
+
+  .content {
+    font-size: 9pt !important;
+    color: black !important;
+  }
 }

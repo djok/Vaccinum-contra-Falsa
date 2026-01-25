@@ -1,0 +1,231 @@
+/**
+ * Print All Page Styles
+ */
+
+.printContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.printControls {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--ifm-color-gray-100);
+  border-radius: 8px;
+}
+
+[data-theme='dark'] .printControls {
+  background: var(--ifm-color-gray-800);
+}
+
+.printControls h1 {
+  margin-bottom: 1rem;
+}
+
+.printControls p {
+  color: var(--ifm-color-gray-700);
+  margin-bottom: 1.5rem;
+}
+
+[data-theme='dark'] .printControls p {
+  color: var(--ifm-color-gray-400);
+}
+
+.printButton {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: var(--ifm-color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.printButton:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+.hint {
+  font-size: 0.875rem;
+  color: var(--ifm-color-gray-600);
+  margin-top: 1rem;
+}
+
+[data-theme='dark'] .hint {
+  color: var(--ifm-color-gray-500);
+}
+
+/* Document Content */
+.documentContent {
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+/* Title Page */
+.titlePage {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--ifm-color-gray-300);
+}
+
+.titlePage h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.titlePage h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ifm-color-gray-700);
+  margin-bottom: 2rem;
+}
+
+[data-theme='dark'] .titlePage h2 {
+  color: var(--ifm-color-gray-400);
+}
+
+.authors {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.source {
+  font-size: 0.9rem;
+  color: var(--ifm-color-gray-600);
+}
+
+/* Table of Contents */
+.toc {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--ifm-color-gray-50);
+  border-radius: 4px;
+}
+
+[data-theme='dark'] .toc {
+  background: var(--ifm-color-gray-900);
+}
+
+.toc h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.toc ol {
+  padding-left: 1.5rem;
+}
+
+.toc li {
+  margin-bottom: 0.5rem;
+}
+
+/* Chapters */
+.chapter {
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+.chapter h1 {
+  font-size: 1.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  .printContainer {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .printControls {
+    display: none !important;
+  }
+
+  /* Title Page */
+  .titlePage {
+    page-break-after: always;
+    break-after: always;
+    padding: 40mm 0;
+    border: none;
+  }
+
+  .titlePage h1 {
+    font-size: 24pt;
+  }
+
+  .titlePage h2 {
+    font-size: 18pt;
+    color: #333;
+  }
+
+  /* Table of Contents */
+  .toc {
+    page-break-after: always;
+    break-after: always;
+    background: none;
+    padding: 0;
+  }
+
+  .toc h2 {
+    font-size: 16pt;
+  }
+
+  /* Chapters */
+  .chapter {
+    margin-bottom: 0;
+    padding-top: 0;
+  }
+
+  .chapter h1 {
+    page-break-before: always;
+    break-before: always;
+    font-size: 18pt;
+    border-bottom: 1pt solid black;
+  }
+
+  .chapter h1:first-of-type {
+    page-break-before: auto;
+    break-before: auto;
+  }
+
+  /* Prevent awkward breaks */
+  .chapter h2,
+  .chapter h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  .chapter p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Images */
+  .chapter img {
+    max-width: 100%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Tables */
+  .chapter table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* ParallelText in print */
+  .chapter [class*="container"] {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

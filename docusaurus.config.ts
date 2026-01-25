@@ -86,6 +86,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/print-all',
+          label: 'Print All',
+          position: 'left',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
