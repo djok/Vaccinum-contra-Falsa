@@ -28,3 +28,22 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+/* Parallel text legend */
+.parallel-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.legend-en {
+  color: var(--ifm-color-primary);
+}
+
+.legend-bg {
+  color: var(--ifm-color-success);
+}

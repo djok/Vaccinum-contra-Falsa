@@ -9,12 +9,10 @@ interface ParallelTextProps {
 export default function ParallelText({ en, bg }: ParallelTextProps) {
   return (
     <div className={styles.container}>
-      <div className={styles.column}>
-        <div className={styles.header}>English</div>
+      <div className={styles.columnEn}>
         <div className={styles.content}>{en}</div>
       </div>
-      <div className={styles.column}>
-        <div className={styles.header}>Български</div>
+      <div className={styles.columnBg}>
         <div className={styles.content}>{bg}</div>
       </div>
     </div>

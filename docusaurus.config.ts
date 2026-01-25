@@ -81,6 +81,11 @@ const config: Config = {
           label: 'Document',
         },
         {
+          to: '/pdf-viewer',
+          label: 'Original PDF',
+          position: 'left',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
