@@ -78,7 +78,13 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'memphistSidebar',
           position: 'left',
-          label: 'Document',
+          label: 'Memphis & Misraim',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'bridgeToLightSidebar',
+          position: 'left',
+          label: 'Мост към Светлината',
         },
         {
           to: '/pdf-viewer',
