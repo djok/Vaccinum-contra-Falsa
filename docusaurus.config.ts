@@ -87,9 +87,19 @@ const config: Config = {
           label: 'Мост към Светлината',
         },
         {
-          to: '/pdf-viewer',
-          label: 'Original PDF',
+          type: 'dropdown',
+          label: 'PDF',
           position: 'left',
+          items: [
+            {
+              to: '/pdf-viewer',
+              label: 'Memphis & Misraim PDF',
+            },
+            {
+              to: '/bridge-to-light-pdf',
+              label: 'Bridge to Light PDF',
+            },
+          ],
         },
         {
           to: '/print-all',
